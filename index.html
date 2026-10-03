@@ -698,6 +698,55 @@
       flex-shrink: 0;
     }
 
+    /* ── Interests ── */
+    .interests__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+
+    .interest-item {
+      padding: 32px 20px;
+      background: var(--ivory);
+      border: 1px solid var(--cloud);
+      border-radius: 3px;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .interest-item:hover {
+      border-color: var(--mist);
+      transform: translateY(-2px);
+    }
+
+    .interest-icon {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 16px;
+      color: var(--gold);
+    }
+
+    .interest-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .interest-name {
+      font-family: var(--serif);
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .interest-detail {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--silver);
+    }
+
     /* ── Contact ── */
     .contact {
       background: var(--navy);
@@ -915,6 +964,10 @@
         grid-template-columns: 1fr;
       }
 
+      .interests__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
       .contact__links {
         gap: 24px;
       }
@@ -950,6 +1003,7 @@
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#interests">Interests</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
@@ -963,7 +1017,7 @@
   <!-- Hero -->
   <section class="hero" id="hero">
     <div class="hero__content">
-      <p class="hero__overline">M&amp;A / Private Equity &amp; Debt / Corporate Finance / Consulting</p>
+      <p class="hero__overline">M&amp;A &middot; Private Equity &amp; Debt &middot; Corporate Finance &middot; Consulting</p>
       <h1 class="hero__name">Alexandro Asavoie</h1>
       <p class="hero__tagline">
         MSc student at Luiss University with hands-on experience in M&amp;A advisory
@@ -1162,6 +1216,46 @@
             <li><span class="skill-dot"></span>BLSD Certification</li>
             <li><span class="skill-dot"></span>CONI Swimming Instructor</li>
           </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interests -->
+  <section class="interests" id="interests">
+    <div class="section__inner">
+      <p class="section__label reveal">Beyond Finance</p>
+      <h2 class="section__title reveal">Personal Interests</h2>
+      <div class="divider reveal"></div>
+
+      <div class="interests__grid reveal">
+        <div class="interest-item">
+          <div class="interest-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+          </div>
+          <h3 class="interest-name">Boxing</h3>
+          <p class="interest-detail">Competitive athlete</p>
+        </div>
+        <div class="interest-item">
+          <div class="interest-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          </div>
+          <h3 class="interest-name">Tennis</h3>
+          <p class="interest-detail">Racket sports</p>
+        </div>
+        <div class="interest-item">
+          <div class="interest-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
+          </div>
+          <h3 class="interest-name">Padel</h3>
+          <p class="interest-detail">Racket sports</p>
+        </div>
+        <div class="interest-item">
+          <div class="interest-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v6a6 6 0 0 0 12 0V4"/><line x1="4" y1="21" x2="20" y2="21"/><line x1="12" y1="16" x2="12" y2="21"/></svg>
+          </div>
+          <h3 class="interest-name">Weight Training</h3>
+          <p class="interest-detail">Strength &amp; conditioning</p>
         </div>
       </div>
     </div>
