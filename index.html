@@ -374,9 +374,10 @@
 
     .about__grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
+      grid-template-columns: 1fr;
+      gap: 0;
       align-items: start;
+      max-width: 720px;
     }
 
     .about__text p {
@@ -878,11 +879,7 @@
 
       .about__grid {
         grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .about__highlights {
-        grid-template-columns: 1fr 1fr;
+        gap: 0;
       }
 
       .edu-card {
@@ -928,10 +925,6 @@
     }
 
     @media (max-width: 480px) {
-      .about__highlights {
-        grid-template-columns: 1fr;
-      }
-
       .hero__cta-group {
         flex-direction: column;
         align-items: center;
@@ -970,14 +963,14 @@
   <!-- Hero -->
   <section class="hero" id="hero">
     <div class="hero__content">
-      <p class="hero__overline">M&amp;A &middot; Private Equity &middot; Corporate Finance</p>
+      <p class="hero__overline">M&amp;A &middot; Private Equity &middot; Private Debt &middot; Corporate Finance &middot; Consulting</p>
       <h1 class="hero__name">Alexandro Asavoie</h1>
       <p class="hero__tagline">
         MSc student at Luiss University with hands-on experience in M&amp;A advisory
         and venture capital. Building a career in investment banking and corporate finance.
       </p>
       <div class="hero__cta-group">
-        <a href="#contact" class="btn btn--primary">Get in Touch</a>
+        <a href="#contact" class="btn btn--primary">Contact</a>
         <a href="#experience" class="btn btn--outline">View Experience</a>
       </div>
     </div>
@@ -1005,24 +998,6 @@
             practical deal execution, supported by proficiency in Bloomberg Terminal, Refinitiv Eikon,
             and advanced Excel modeling.
           </p>
-        </div>
-        <div class="about__highlights reveal">
-          <div class="highlight">
-            <p class="highlight__value">28.5/30</p>
-            <p class="highlight__label">GPA (equiv. 3.8/4.0)</p>
-          </div>
-          <div class="highlight">
-            <p class="highlight__value">3</p>
-            <p class="highlight__label">Languages Spoken</p>
-          </div>
-          <div class="highlight">
-            <p class="highlight__value">AETOS</p>
-            <p class="highlight__label">M&amp;A Advisory</p>
-          </div>
-          <div class="highlight">
-            <p class="highlight__value">BMC</p>
-            <p class="highlight__label">Bloomberg Certified</p>
-          </div>
         </div>
       </div>
     </div>
@@ -1112,7 +1087,7 @@
   <section class="projects" id="projects">
     <div class="section__inner">
       <p class="section__label reveal">Projects &amp; Activities</p>
-      <h2 class="section__title reveal">Selected Work</h2>
+      <h2 class="section__title reveal">Projects &amp; Initiatives</h2>
       <div class="divider reveal"></div>
 
       <div class="projects__grid">
@@ -1197,10 +1172,6 @@
     <div class="section__inner">
       <p class="section__label reveal">Contact</p>
       <h2 class="section__title reveal">Let's Connect</h2>
-      <p class="section__subtitle reveal" style="margin-left:auto;margin-right:auto;">
-        Open to opportunities in investment banking, M&amp;A advisory, private equity, and corporate finance.
-      </p>
-
       <div class="contact__links reveal">
         <a href="mailto:alexandro.asavoie@outlook.it" class="contact__item">
           <div class="contact__icon">
