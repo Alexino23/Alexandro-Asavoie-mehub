@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alexandro Asavoie</title>
+  <meta name="description" content="Alexandro Asavoie — MSc student at Luiss University specializing in Corporate Finance, M&A, and Private Equity.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0b1a2e;
+      --navy-light: #132744;
+      --slate: #3a4a5c;
+      --steel: #6b7c8f;
+      --silver: #94a3b3;
+      --mist: #c8d0d9;
+      --cloud: #e8ecf0;
+      --ivory: #f6f7f9;
+      --white: #ffffff;
+      --accent: #1a3a5c;
+      --accent-light: #2a5a8c;
+      --gold: #b8973a;
+      --gold-muted: #c4a95a;
+      --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+      --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --max-width: 1080px;
+      --transition: 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --navy: #e8ecf0;
+        --navy-light: #c8d0d9;
+        --slate: #b0bcc8;
+        --steel: #8a9bae;
+        --silver: #6b7c8f;
+        --mist: #3a4a5c;
+        --cloud: #1e2d3f;
+        --ivory: #0f1a28;
+        --white: #0a1220;
+        --accent: #8ab4e0;
+        --accent-light: #6a9fd0;
+        --gold: #d4b85a;
+        --gold-muted: #c4a95a;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --navy: #e8ecf0;
+      --navy-light: #c8d0d9;
+      --slate: #b0bcc8;
+      --steel: #8a9bae;
+      --silver: #6b7c8f;
+      --mist: #3a4a5c;
+      --cloud: #1e2d3f;
+      --ivory: #0f1a28;
+      --white: #0a1220;
+      --accent: #8ab4e0;
+      --accent-light: #6a9fd0;
+      --gold: #d4b85a;
+      --gold-muted: #c4a95a;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--sans);
+      color: var(--slate);
+      background: var(--white);
+      line-height: 1.7;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ── Navigation ── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .nav {
+        background: rgba(10, 18, 32, 0.92);
+      }
+    }
+
+    :root[data-theme="dark"] .nav {
+      background: rgba(10, 18, 32, 0.92);
+    }
+
+    .nav.scrolled {
+      border-bottom-color: var(--cloud);
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    .nav__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav__logo {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav__links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav__links a {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--steel);
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      transition: color var(--transition);
+      position: relative;
+    }
+
+    .nav__links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width var(--transition);
+    }
+
+    .nav__links a:hover,
+    .nav__links a.active {
+      color: var(--navy);
+    }
+
+    .nav__links a:hover::after,
+    .nav__links a.active::after {
+      width: 100%;
+    }
+
+    .nav__hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav__hamburger span {
+      display: block;
+      width: 20px;
+      height: 1.5px;
+      background: var(--navy);
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    .nav__hamburger.open span:nth-child(1) {
+      transform: rotate(45deg) translate(4px, 4px);
+    }
+
+    .nav__hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav__hamburger.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(26, 58, 92, 0.03) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(184, 151, 58, 0.02) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero__content {
+      max-width: var(--max-width);
+      width: 100%;
+      text-align: center;
+    }
+
+    .hero__overline {
+      font-size: 0.75rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--gold);
+      margin-bottom: 24px;
+    }
+
+    .hero__name {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 400;
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero__tagline {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      color: var(--steel);
+      max-width: 640px;
+      margin: 0 auto 40px;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+    .hero__cta-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 32px;
+      font-family: var(--sans);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all var(--transition);
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn--primary {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .btn--primary:hover {
+      background: var(--navy-light);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(11, 26, 46, 0.15);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .btn--primary {
+        background: var(--accent);
+        color: #0a1220;
+      }
+      :root:not([data-theme="light"]) .btn--primary:hover {
+        background: var(--accent-light);
+      }
+    }
+
+    :root[data-theme="dark"] .btn--primary {
+      background: var(--accent);
+      color: #0a1220;
+    }
+
+    :root[data-theme="dark"] .btn--primary:hover {
+      background: var(--accent-light);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--slate);
+      border: 1px solid var(--mist);
+    }
+
+    .btn--outline:hover {
+      border-color: var(--slate);
+      color: var(--navy);
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: 96px 24px;
+    }
+
+    .section__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .section__label {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .section__title {
+      font-family: var(--serif);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .section__subtitle {
+      font-size: 1rem;
+      color: var(--steel);
+      max-width: 600px;
+      font-weight: 300;
+      margin-bottom: 56px;
+      line-height: 1.7;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin-bottom: 48px;
+    }
+
+    /* ── About ── */
+    .about {
+      background: var(--ivory);
+    }
+
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      align-items: start;
+      max-width: 720px;
+    }
+
+    .about__text p {
+      margin-bottom: 20px;
+      color: var(--slate);
+      font-size: 0.9375rem;
+    }
+
+    .about__highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .highlight {
+      padding: 24px;
+      background: var(--white);
+      border: 1px solid var(--cloud);
+      border-radius: 3px;
+    }
+
+    .highlight__value {
+      font-family: var(--serif);
+      font-size: 1.75rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .highlight__label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--steel);
+    }
+
+    /* ── Education ── */
+    .education__cards {
+      display: grid;
+      gap: 32px;
+    }
+
+    .edu-card {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      padding: 40px;
+      background: var(--ivory);
+      border: 1px solid var(--cloud);
+      border-radius: 3px;
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .edu-card:hover {
+      border-color: var(--mist);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .edu-card__meta {
+      border-right: 1px solid var(--cloud);
+      padding-right: 40px;
+    }
+
+    .edu-card__period {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--steel);
+      margin-bottom: 8px;
+    }
+
+    .edu-card__location {
+      font-size: 0.8125rem;
+      color: var(--silver);
+    }
+
+    .edu-card__school {
+      font-family: var(--serif);
+      font-size: 1.375rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .edu-card__degree {
+      font-size: 0.9375rem;
+      color: var(--slate);
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+
+    .edu-card__gpa {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+
+    .edu-card__courses {
+      font-size: 0.8125rem;
+      color: var(--steel);
+      line-height: 1.8;
+    }
+
+    .edu-card__courses strong {
+      color: var(--slate);
+      font-weight: 500;
+    }
+
+    /* ── Experience ── */
+    .experience {
+      background: var(--ivory);
+    }
+
+    .exp-card {
+      padding: 48px;
+      background: var(--white);
+      border: 1px solid var(--cloud);
+      border-radius: 3px;
+      margin-bottom: 32px;
+    }
+
+    .exp-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .exp-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .exp-card__company {
+      font-family: var(--serif);
+      font-size: 1.375rem;
+      font-weight: 500;
+      color: var(--navy);
+    }
+
+    .exp-card__role {
+      font-size: 0.9375rem;
+      color: var(--slate);
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    .exp-card__details {
+      text-align: right;
+    }
+
+    .exp-card__period {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--steel);
+    }
+
+    .exp-card__location {
+      font-size: 0.8125rem;
+      color: var(--silver);
+    }
+
+    .exp-card__bullets {
+      list-style: none;
+    }
+
+    .exp-card__bullets li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 16px;
+      font-size: 0.9375rem;
+      color: var(--slate);
+      line-height: 1.7;
+    }
+
+    .exp-card__bullets li:last-child {
+      margin-bottom: 0;
+    }
+
+    .exp-card__bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    /* ── Projects ── */
+    .projects__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .project-card {
+      padding: 40px;
+      background: var(--ivory);
+      border: 1px solid var(--cloud);
+      border-radius: 3px;
+      transition: border-color var(--transition), transform var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      border-color: var(--mist);
+      transform: translateY(-2px);
+    }
+
+    .project-card__tag {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .project-card__title {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 8px;
+    }
+
+    .project-card__context {
+      font-size: 0.8125rem;
+      color: var(--silver);
+      margin-bottom: 16px;
+    }
+
+    .project-card__desc {
+      font-size: 0.9375rem;
+      color: var(--slate);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .project-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .tag {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 12px;
+      background: var(--white);
+      border: 1px solid var(--cloud);
+      color: var(--steel);
+      border-radius: 2px;
+    }
+
+    /* ── Skills ── */
+    .skills {
+      background: var(--ivory);
+    }
+
+    .skills__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .skill-group {
+      padding: 36px;
+      background: var(--white);
+      border: 1px solid var(--cloud);
+      border-radius: 3px;
+    }
+
+    .skill-group__title {
+      font-family: var(--serif);
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--cloud);
+    }
+
+    .skill-group__list {
+      list-style: none;
+    }
+
+    .skill-group__list li {
+      font-size: 0.875rem;
+      color: var(--slate);
+      padding: 8px 0;
+      border-bottom: 1px solid var(--cloud);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .skill-group__list li:last-child {
+      border-bottom: none;
+    }
+
+    .skill-dot {
+      width: 4px;
+      height: 4px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── Interests ── */
+    .interests__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      text-align: center;
+    }
+
+    .interest-item {
+      padding: 32px 20px;
+      background: var(--ivory);
+      border: 1px solid var(--cloud);
+      border-radius: 3px;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .interest-item:hover {
+      border-color: var(--mist);
+      transform: translateY(-2px);
+    }
+
+    .interest-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 16px;
+      color: var(--gold);
+    }
+
+    .interest-icon svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .interest-name {
+      font-family: var(--serif);
+      font-size: 1.125rem;
+      font-weight: 500;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .interest-detail {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--silver);
+    }
+
+    /* ── Contact ── */
+    .contact {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .contact {
+        background: #060d17;
+      }
+    }
+
+    :root[data-theme="dark"] .contact {
+      background: #060d17;
+    }
+
+    .contact .section__label {
+      color: var(--gold-muted);
+    }
+
+    .contact .section__title {
+      color: var(--white);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .contact .section__title {
+        color: var(--ivory);
+      }
+    }
+
+    :root[data-theme="dark"] .contact .section__title {
+      color: var(--ivory);
+    }
+
+    .contact .section__subtitle {
+      color: var(--silver);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact__links {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .contact__item {
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      transition: transform var(--transition);
+    }
+
+    .contact__item:hover {
+      transform: translateY(-2px);
+    }
+
+    .contact__icon {
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color var(--transition), background var(--transition);
+    }
+
+    .contact__item:hover .contact__icon {
+      border-color: var(--gold-muted);
+      background: rgba(184, 151, 58, 0.08);
+    }
+
+    .contact__icon svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: var(--silver);
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .contact__item:hover .contact__icon svg {
+      stroke: var(--gold-muted);
+    }
+
+    .contact__label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--silver);
+    }
+
+    .contact__value {
+      font-size: 0.875rem;
+      color: var(--mist);
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 24px;
+      text-align: center;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) .footer {
+        background: #060d17;
+      }
+    }
+
+    :root[data-theme="dark"] .footer {
+      background: #060d17;
+    }
+
+    .footer__text {
+      font-size: 0.75rem;
+      color: var(--silver);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .nav__links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        flex-direction: column;
+        padding: 24px;
+        gap: 20px;
+        border-bottom: 1px solid var(--cloud);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) .nav__links {
+          background: var(--white);
+        }
+      }
+
+      :root[data-theme="dark"] .nav__links {
+        background: var(--white);
+      }
+
+      .nav__links.open {
+        display: flex;
+      }
+
+      .nav__hamburger {
+        display: flex;
+      }
+
+      .hero {
+        padding: 100px 24px 60px;
+        min-height: auto;
+      }
+
+      .about__grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .edu-card {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 28px;
+      }
+
+      .edu-card__meta {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 1px solid var(--cloud);
+        padding-bottom: 16px;
+      }
+
+      .exp-card {
+        padding: 28px;
+      }
+
+      .exp-card__header {
+        flex-direction: column;
+      }
+
+      .exp-card__details {
+        text-align: left;
+      }
+
+      .projects__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .interests__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .contact__links {
+        gap: 24px;
+      }
+
+      section {
+        padding: 64px 24px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero__cta-group {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+        max-width: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__logo">A.A.</a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#interests">Interests</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero__content">
+      <p class="hero__overline">M&amp;A &middot; Private Equity &amp; Debt &middot; Strategic Advisory</p>
+      <h1 class="hero__name">Alexandro Asavoie</h1>
+      <p class="hero__tagline">
+        MSc student at Luiss University with hands-on experience in M&amp;A advisory
+        and venture capital. Building a career in investment banking and corporate finance.
+      </p>
+      <div class="hero__cta-group">
+        <a href="#contact" class="btn btn--primary">Contact</a>
+        <a href="#experience" class="btn btn--outline">View Experience</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="section__inner">
+      <div class="about__grid">
+        <div class="about__text reveal">
+          <p class="section__label">About</p>
+          <h2 class="section__title">Driven by a passion for deal-making and value creation.</h2>
+          <div class="divider"></div>
+          <p>
+            I am pursuing an MSc in Accounting, Financial Management and Control at Luiss University in Rome,
+            with a focused interest in mergers &amp; acquisitions, private equity, and corporate finance.
+          </p>
+          <p>
+            Currently working as an M&amp;A Analyst and Venture Capital Intern at AETOS Corporate Finance,
+            where I execute sell-side mandates, structure financing packages for real-estate assets,
+            and screen early-stage tech investments in AI and VR/AR.
+          </p>
+          <p>
+            My academic and professional background combines rigorous financial analysis with
+            practical deal execution, supported by proficiency in Bloomberg Terminal, Refinitiv Eikon,
+            and advanced Excel modeling.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="education" id="education">
+    <div class="section__inner">
+      <p class="section__label reveal">Education</p>
+      <h2 class="section__title reveal">Academic Background</h2>
+      <div class="divider reveal"></div>
+
+      <div class="education__cards">
+        <div class="edu-card reveal">
+          <div class="edu-card__meta">
+            <p class="edu-card__period">Sep 2025 &ndash; Jun 2027</p>
+            <p class="edu-card__location">Rome, Italy</p>
+          </div>
+          <div>
+            <h3 class="edu-card__school">Luiss University</h3>
+            <p class="edu-card__degree">MSc Accounting, Financial Management and Control</p>
+            <p class="edu-card__gpa">GPA: 28.50/30.0 (equiv. 3.8/4.0)</p>
+            <p class="edu-card__courses">
+              <strong>Relevant Courses:</strong> Advanced Corporate Finance; Mergers, Acquisitions &amp; Business Valuation;
+              Corporate Financing &amp; Capital Markets; International Accounting Standards (IAS/IFRS); Corporate Tax Law.
+            </p>
+          </div>
+        </div>
+
+        <div class="edu-card reveal">
+          <div class="edu-card__meta">
+            <p class="edu-card__period">Oct 2022 &ndash; Sep 2025</p>
+            <p class="edu-card__location">Rome, Italy</p>
+          </div>
+          <div>
+            <h3 class="edu-card__school">Roma Tre University</h3>
+            <p class="edu-card__degree">BSc Business and Economics</p>
+            <p class="edu-card__courses">
+              <strong>Relevant Courses:</strong> Financial Statement Analysis; Economics of Financial Institutions;
+              Economic Statistics &amp; Data Analysis; Corporate &amp; Business Law; Public Finance &amp; Fiscal Impact.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section class="experience" id="experience">
+    <div class="section__inner">
+      <p class="section__label reveal">Experience</p>
+      <h2 class="section__title reveal">Professional Background</h2>
+      <div class="divider reveal"></div>
+
+      <div class="exp-card reveal">
+        <div class="exp-card__header">
+          <div>
+            <h3 class="exp-card__company">AETOS Corporate Finance</h3>
+            <p class="exp-card__role">M&amp;A Analyst &amp; Venture Capital Intern</p>
+          </div>
+          <div class="exp-card__details">
+            <p class="exp-card__period">Sep 2026 &ndash; Present</p>
+            <p class="exp-card__location">Rome, Italy</p>
+          </div>
+        </div>
+        <ul class="exp-card__bullets">
+          <li>
+            Executing an accelerated sell-side mandate for a building-materials manufacturer (~&euro;16M revenue):
+            building a DCF and trading-comps valuation model within a four-week timeline and drafting an
+            Information Memorandum for prospective buyers.
+          </li>
+          <li>
+            Structuring a financing package for a &euro;13M commercial real-estate asset, sizing repositioning CapEx
+            and developing structured-finance proposals for institutional investors under prospective anchor-tenant
+            scenarios involving Inditex, Decathlon, Primark and JD Sports.
+          </li>
+          <li>
+            Screening pre-seed and seed tech investments in AI and VR/AR, assessing business models, market potential
+            and financial viability and drafting investment memos.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="projects" id="projects">
+    <div class="section__inner">
+      <p class="section__label reveal">Projects &amp; Activities</p>
+      <h2 class="section__title reveal">Projects &amp; Initiatives</h2>
+      <div class="divider reveal"></div>
+
+      <div class="projects__grid">
+        <div class="project-card reveal">
+          <p class="project-card__tag">M&amp;A Valuation</p>
+          <h3 class="project-card__title">Merck &amp; Co. &mdash; Viking Therapeutics Acquisition</h3>
+          <p class="project-card__context">Advanced Corporate Finance &middot; Feb &ndash; Apr 2026</p>
+          <p class="project-card__desc">
+            Acted as buy-side financial advisor to Merck &amp; Co. on the acquisition of Viking Therapeutics
+            (NASDAQ: VKTX). Recommended $70&ndash;85/share (100&ndash;140% premium) via Risk-Adjusted DCF,
+            Comparable Company Analysis, Comparable Transaction Analysis and post-acquisition synergy model.
+          </p>
+          <div class="project-card__tags">
+            <span class="tag">DCF</span>
+            <span class="tag">Comps</span>
+            <span class="tag">CAPM</span>
+            <span class="tag">Synergy Model</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <p class="project-card__tag">Finance Club</p>
+          <h3 class="project-card__title">Pre-IPO / SPAC Screening Tool</h3>
+          <p class="project-card__context">Luiss Finance Club &middot; Jan 2026 &ndash; Present</p>
+          <p class="project-card__desc">
+            Building a proprietary pre-IPO / SPAC screening tool leveraging SEC filings and valuation metrics
+            to identify investment opportunities in the public-market pipeline.
+          </p>
+          <div class="project-card__tags">
+            <span class="tag">SEC Filings</span>
+            <span class="tag">SPAC</span>
+            <span class="tag">Pre-IPO</span>
+            <span class="tag">Screening</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section class="skills" id="skills">
+    <div class="section__inner">
+      <p class="section__label reveal">Skills &amp; Qualifications</p>
+      <h2 class="section__title reveal">Technical Proficiency</h2>
+      <div class="divider reveal"></div>
+
+      <div class="skills__grid">
+        <div class="skill-group reveal">
+          <h3 class="skill-group__title">Financial Tools</h3>
+          <ul class="skill-group__list">
+            <li><span class="skill-dot"></span>Bloomberg Terminal</li>
+            <li><span class="skill-dot"></span>Refinitiv Eikon / Workspace</li>
+            <li><span class="skill-dot"></span>Advanced Excel Modeling</li>
+            <li><span class="skill-dot"></span>SPSS (IBM)</li>
+          </ul>
+        </div>
+
+        <div class="skill-group reveal">
+          <h3 class="skill-group__title">Languages</h3>
+          <ul class="skill-group__list">
+            <li><span class="skill-dot"></span>Italian &mdash; Native</li>
+            <li><span class="skill-dot"></span>Romanian &mdash; Bilingual</li>
+            <li><span class="skill-dot"></span>English &mdash; C1.2 CEFR</li>
+          </ul>
+        </div>
+
+        <div class="skill-group reveal">
+          <h3 class="skill-group__title">Certifications</h3>
+          <ul class="skill-group__list">
+            <li><span class="skill-dot"></span>Bloomberg Market Concepts</li>
+            <li><span class="skill-dot"></span>English C1.2 CEFR (Luiss)</li>
+            <li><span class="skill-dot"></span>BLSD Certification</li>
+            <li><span class="skill-dot"></span>CONI Swimming Instructor</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interests -->
+  <section class="interests" id="interests">
+    <div class="section__inner">
+      <p class="section__label reveal">Beyond Finance</p>
+      <h2 class="section__title reveal">Personal Interests</h2>
+      <div class="divider reveal"></div>
+
+      <div class="interests__grid reveal">
+        <div class="interest-item">
+          <div class="interest-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8c-4 .5-7 4.5-7 10 0 6 3 11.5 8.5 13 4.5 1.2 8.5-.5 10.5-4 1.2-2.2 2-5 2-8.5v-3.5c0-4.5-3-7.5-7.5-7.5z" stroke-width="1.6"/><path d="M10 15c-2.2 1.5-2.5 5.5.5 7.5"/><rect x="14" y="31.5" width="14" height="7" rx="2"/><line x1="14" y1="35" x2="28" y2="35"/></svg>
+          </div>
+          <h3 class="interest-name">Boxing</h3>
+          <p class="interest-detail">Competitive athlete</p>
+        </div>
+        <div class="interest-item">
+          <div class="interest-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><defs><clipPath id="rh" transform="rotate(-20,20,22)"><ellipse cx="19" cy="13" rx="8" ry="11"/></clipPath></defs><g transform="rotate(-20,20,22)"><ellipse cx="19" cy="13" rx="9.5" ry="12.5" stroke-width="2"/><g clip-path="url(#rh)" stroke-width="0.6"><line x1="5" y1="7" x2="33" y2="7"/><line x1="5" y1="10" x2="33" y2="10"/><line x1="5" y1="13" x2="33" y2="13"/><line x1="5" y1="16" x2="33" y2="16"/><line x1="5" y1="19" x2="33" y2="19"/><line x1="14" y1="0" x2="14" y2="26"/><line x1="16.5" y1="0" x2="16.5" y2="26"/><line x1="19" y1="0" x2="19" y2="26"/><line x1="21.5" y1="0" x2="21.5" y2="26"/><line x1="24" y1="0" x2="24" y2="26"/></g><path d="M13 24.5L17.5 31"/><path d="M25 24.5L20.5 31"/><line x1="17.5" y1="31" x2="17.5" y2="46" stroke-width="1.5"/><line x1="20.5" y1="31" x2="20.5" y2="46" stroke-width="1.5"/><line x1="17" y1="36" x2="21" y2="34.5" stroke-width="0.7"/><line x1="17" y1="38.5" x2="21" y2="37" stroke-width="0.7"/><line x1="17" y1="41" x2="21" y2="39.5" stroke-width="0.7"/><line x1="17" y1="43.5" x2="21" y2="42" stroke-width="0.7"/><line x1="17" y1="46" x2="21" y2="46" stroke-width="1.5"/></g><circle cx="39" cy="38" r="4"/><path d="M36.5 35q1.5 3 0 6" stroke-width="1"/><path d="M41.5 35q-1.5 3 0 6" stroke-width="1"/></svg>
+          </div>
+          <h3 class="interest-name">Tennis</h3>
+          <p class="interest-detail">Amateur athlete</p>
+        </div>
+        <div class="interest-item">
+          <div class="interest-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-15,18,20)"><path d="M18 3C10 3 5 9 5 16c0 6 3 10.5 7 13l2 1h8l2-1c4-2.5 7-7 7-13C31 9 26 3 18 3z" stroke-width="1.5"/><rect x="15.5" y="31.5" width="5" height="11" rx="1.5"/><circle cx="15" cy="10" r="0.7" fill="currentColor" stroke="none"/><circle cx="18" cy="10" r="0.7" fill="currentColor" stroke="none"/><circle cx="21" cy="10" r="0.7" fill="currentColor" stroke="none"/><circle cx="13" cy="13" r="0.7" fill="currentColor" stroke="none"/><circle cx="16" cy="13" r="0.7" fill="currentColor" stroke="none"/><circle cx="19" cy="13" r="0.7" fill="currentColor" stroke="none"/><circle cx="22" cy="13" r="0.7" fill="currentColor" stroke="none"/><circle cx="11" cy="16" r="0.7" fill="currentColor" stroke="none"/><circle cx="14" cy="16" r="0.7" fill="currentColor" stroke="none"/><circle cx="17" cy="16" r="0.7" fill="currentColor" stroke="none"/><circle cx="20" cy="16" r="0.7" fill="currentColor" stroke="none"/><circle cx="23" cy="16" r="0.7" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="0.7" fill="currentColor" stroke="none"/><circle cx="15" cy="19" r="0.7" fill="currentColor" stroke="none"/><circle cx="18" cy="19" r="0.7" fill="currentColor" stroke="none"/><circle cx="21" cy="19" r="0.7" fill="currentColor" stroke="none"/><circle cx="24" cy="19" r="0.7" fill="currentColor" stroke="none"/><circle cx="13" cy="22" r="0.7" fill="currentColor" stroke="none"/><circle cx="16" cy="22" r="0.7" fill="currentColor" stroke="none"/><circle cx="19" cy="22" r="0.7" fill="currentColor" stroke="none"/><circle cx="22" cy="22" r="0.7" fill="currentColor" stroke="none"/><circle cx="15" cy="25" r="0.7" fill="currentColor" stroke="none"/><circle cx="18" cy="25" r="0.7" fill="currentColor" stroke="none"/><circle cx="21" cy="25" r="0.7" fill="currentColor" stroke="none"/></g><circle cx="40" cy="40" r="3.5"/><path d="M37.5 37.5q1.3 2.5 0 5" stroke-width="1"/><path d="M42.5 37.5q-1.3 2.5 0 5" stroke-width="1"/></svg>
+          </div>
+          <h3 class="interest-name">Padel</h3>
+          <p class="interest-detail">Amateur athlete</p>
+        </div>
+        <div class="interest-item">
+          <div class="interest-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="24" x2="44" y2="24"/><rect x="8" y="14" width="6" height="20" rx="1"/><rect x="34" y="14" width="6" height="20" rx="1"/><rect x="14" y="18" width="4" height="12" rx="1"/><rect x="30" y="18" width="4" height="12" rx="1"/></svg>
+          </div>
+          <h3 class="interest-name">Weight Training</h3>
+          <p class="interest-detail">Strength &amp; discipline</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <div class="section__inner">
+      <p class="section__label reveal">Contact</p>
+      <h2 class="section__title reveal">Let's Connect</h2>
+      <div class="contact__links reveal">
+        <a href="tel:+393512080869" class="contact__item">
+          <div class="contact__icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <span class="contact__label">Phone</span>
+          <span class="contact__value">+39 351 208 0869</span>
+        </a>
+
+        <a href="mailto:alexandro.asavoie@outlook.it" class="contact__item">
+          <div class="contact__icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span class="contact__label">Email</span>
+          <span class="contact__value">alexandro.asavoie@outlook.it</span>
+        </a>
+
+        <a href="https://linkedin.com/in/alexandro-asavoie" target="_blank" rel="noopener noreferrer" class="contact__item">
+          <div class="contact__icon">
+            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <span class="contact__label">LinkedIn</span>
+          <span class="contact__value">alexandro-asavoie</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="footer__text">&copy; 2026 Alexandro Asavoie. All rights reserved.</p>
+  </footer>
+
+  <script>
+    (function() {
+      var nav = document.getElementById('nav');
+      var hamburger = document.getElementById('hamburger');
+      var navLinks = document.getElementById('navLinks');
+      var links = navLinks.querySelectorAll('a');
+
+      window.addEventListener('scroll', function() {
+        nav.classList.toggle('scrolled', window.scrollY > 20);
+      });
+
+      hamburger.addEventListener('click', function() {
+        hamburger.classList.toggle('open');
+        navLinks.classList.toggle('open');
+      });
+
+      links.forEach(function(link) {
+        link.addEventListener('click', function() {
+          hamburger.classList.remove('open');
+          navLinks.classList.remove('open');
+        });
+      });
+
+      var sections = document.querySelectorAll('section[id]');
+      function updateActiveLink() {
+        var scrollY = window.scrollY + 100;
+        sections.forEach(function(section) {
+          var top = section.offsetTop;
+          var height = section.offsetHeight;
+          var id = section.getAttribute('id');
+          var link = navLinks.querySelector('a[href="#' + id + '"]');
+          if (link) {
+            if (scrollY >= top && scrollY < top + height) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          }
+        });
+      }
+      window.addEventListener('scroll', updateActiveLink);
+      updateActiveLink();
+
+      var reveals = document.querySelectorAll('.reveal');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+      reveals.forEach(function(el) { observer.observe(el); });
+    })();
+  </script>
+</body>
+</html>
