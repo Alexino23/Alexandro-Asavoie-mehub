@@ -8,6 +8,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <!-- Vercel Web Analytics -->
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
   <style>
     :root {
       --navy: #0b1a2e;
@@ -377,6 +382,11 @@
       grid-template-columns: 1fr;
       gap: 0;
       align-items: start;
+    }
+
+    /* The 720px cap now applies only to the heading, so its line breaks stay
+       exactly as before while the paragraphs use the full section width. */
+    .about__text .section__title {
       max-width: 720px;
     }
 
@@ -885,6 +895,33 @@
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* ── Text justification (descriptive copy only) ──
+       Below 769px everything stays left-aligned (the default) to avoid
+       wide word gaps on narrow columns. */
+    @media (min-width: 769px) {
+      .about__text p:not(.section__label),
+      .exp-card__bullets li,
+      .edu-card__courses {
+        text-align: justify;
+        text-align-last: left;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+        overflow-wrap: break-word;
+      }
+    }
+
+    /* Project cards sit in a two-column grid: justify only once the columns
+       are wide enough (≈50+ characters per line). */
+    @media (min-width: 1000px) {
+      .project-card__desc {
+        text-align: justify;
+        text-align-last: left;
+        hyphens: auto;
+        -webkit-hyphens: auto;
+        overflow-wrap: break-word;
+      }
     }
 
     /* ── Responsive ── */
